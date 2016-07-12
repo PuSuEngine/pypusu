@@ -8,17 +8,19 @@ try:
     print("Converted README.md into reStructuredText")
 except(IOError, ImportError):
     long_description = open('README.md').read()
+except(IOError, ImportError):
+    long_description = None
 
 setup(
     name='pypusu',
     packages=['pypusu'],  # this must be the same as the name above
-    version='1.0.3',
+    version='1.0.4',
     description='Python client for PuSuEngine',
     long_description=long_description,
     author='Janne Enberg',
     author_email='janne.enberg@lietu.net',
     url='https://github.com/PuSuEngine/pypusu',
-    download_url='https://github.com/PuSuEngine/pypusu/tarball/v1.0.3',
+    download_url='https://github.com/PuSuEngine/pypusu/tarball/v1.0.4',
     keywords=['pubsub', 'publisher', 'subscriber', 'messaging'],
     classifiers=[
         "Development Status :: 5 - Production/Stable",

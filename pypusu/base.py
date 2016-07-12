@@ -50,7 +50,7 @@ class _PuSuBaseClient(object):
         :param function onclose: Optional callback to run when connection is
                                  closed for any reason.
         """
-
+        self.debug = DEBUG
         self.server = server
         self.onclose = onclose
         self.timeout = 5.0  # seconds
@@ -124,10 +124,10 @@ class _PuSuBaseClient(object):
 
     def _wait(self):
         try:
-            if DEBUG:
+            if self.debug:
                 print("Waiting for {}".format(self._waiting_for))
             self._wait_queue.get(timeout=self.timeout)
-            if DEBUG:
+            if self.debug:
                 print("Got {}".format(self._waiting_for))
         except Empty:
             raise TimeoutExceeded()

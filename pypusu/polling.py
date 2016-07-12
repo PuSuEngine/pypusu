@@ -36,6 +36,8 @@ class PuSuClient(ThreadedPuSuClient):
     def __init__(self, *args):
         super(PuSuClient, self).__init__(*args)
         self._incoming_messages = Queue()
+        if DEBUG:
+            self.debug = True
 
     def poll(self):
         """
@@ -49,11 +51,11 @@ class PuSuClient(ThreadedPuSuClient):
                 self._on_receive(item)
             except Empty:
                 break
-        if DEBUG:
+        if self.debug:
             print("<< {} messages delivered from queue".format(count))
 
     def _received_message(self, data):
-        if DEBUG:
+        if self.debug:
             print("<- {}".format(data))
 
         msg = json.loads(str(data))

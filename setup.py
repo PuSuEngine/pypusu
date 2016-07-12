@@ -1,14 +1,24 @@
 from distutils.core import setup
 
+# Convert README.md to reStructuredText
+try:
+    import pypandoc
+
+    long_description = pypandoc.convert('README.md', 'rst')
+    print("Converted README.md into reStructuredText")
+except(IOError, ImportError):
+    long_description = open('README.md').read()
+
 setup(
     name='pypusu',
     packages=['pypusu'],  # this must be the same as the name above
-    version='1.0.2',
+    version='1.0.3',
     description='Python client for PuSuEngine',
+    long_description=long_description,
     author='Janne Enberg',
     author_email='janne.enberg@lietu.net',
     url='https://github.com/PuSuEngine/pypusu',
-    download_url='https://github.com/PuSuEngine/pypusu/tarball/v1.0.2',
+    download_url='https://github.com/PuSuEngine/pypusu/tarball/v1.0.3',
     keywords=['pubsub', 'publisher', 'subscriber', 'messaging'],
     classifiers=[
         "Development Status :: 5 - Production/Stable",

@@ -68,6 +68,11 @@ class PuSuClient(_PuSuBaseClient):
         client.publish("some-channel", "data")
     """
 
+    def __init__(self, *args):
+        super(PuSuClient, self).__init__(*args)
+        if DEBUG:
+            self.debug = True
+
     def connect(self):
         """
         Connect to the WSPS server, starts the thread. Does not promise that
@@ -95,7 +100,7 @@ class PuSuClient(_PuSuBaseClient):
             self._client.run_forever()
 
     def _send(self, data):
-        if DEBUG:
+        if self.debug:
             print("-> {}".format(data))
         try:
             self._client.send(data)
@@ -104,6 +109,6 @@ class PuSuClient(_PuSuBaseClient):
             raise PyPuSuConnectionError("Looks like we're disconnected")
 
     def _received_message(self, data):
-        if DEBUG:
+        if self.debug:
             print("<- {}".format(data))
         self._on_receive(json.loads(str(data)))

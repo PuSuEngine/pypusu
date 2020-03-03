@@ -4,7 +4,7 @@ standard_library.install_aliases()
 from builtins import object
 import json
 try:
-    from queue import Queue, Empty  # Python 2
+    from Queue import Queue, Empty  # Python 2
 except ImportError:
     from queue import Queue, Empty  # Python 3
 

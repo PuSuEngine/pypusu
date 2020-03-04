@@ -1,16 +1,12 @@
 from __future__ import print_function
 from future import standard_library
 standard_library.install_aliases()
-from builtins import str
-import json
-from .threaded import PuSuClient as ThreadedPuSuClient
 
-try:
-    # Py2
-    from queue import Queue, Empty
-except ImportError:
-    # Py3
-    from queue import Queue, Empty
+import json
+from builtins import str
+from queue import Queue, Empty
+
+from .threaded import PuSuClient as ThreadedPuSuClient
 
 DEBUG = False
 

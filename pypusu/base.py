@@ -1,12 +1,10 @@
 from __future__ import print_function
 from future import standard_library
 standard_library.install_aliases()
-from builtins import object
+
 import json
-try:
-    from Queue import Queue, Empty  # Python 2
-except ImportError:
-    from queue import Queue, Empty  # Python 3
+from builtins import object
+from queue import Queue, Empty
 
 DEBUG = False
 

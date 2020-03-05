@@ -1,5 +1,10 @@
+from __future__ import print_function
+from future import standard_library
+standard_library.install_aliases()
+
 import json
-from Queue import Queue, Empty
+from builtins import object
+from queue import Queue, Empty
 
 DEBUG = False
 

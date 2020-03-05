@@ -1,3 +1,5 @@
+from __future__ import print_function
+from builtins import str
 import json
 from ws4py.client.threadedclient import WebSocketClient
 from .base import _PuSuBaseClient

@@ -1,3 +1,7 @@
+from __future__ import division
+from __future__ import print_function
+from builtins import range
+from past.utils import old_div
 from pypusu.threaded import PuSuClient
 from time import sleep, time
 
@@ -30,7 +34,7 @@ if __name__ == "__main__":
     print("Sent {} messages in {:.3f}s, {:.2f}msg/s".format(
         target,
         elapsed,
-        target / elapsed
+        old_div(target, elapsed)
     ))
 
     sleep(60)

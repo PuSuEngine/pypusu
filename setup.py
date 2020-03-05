@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 # Convert README.md to reStructuredText
 try:

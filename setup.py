@@ -1,16 +1,11 @@
+from io import open
+from os import path
+
 from setuptools import setup
 
-# Convert README.md to reStructuredText
-try:
-    import pypandoc
-
-    long_description = pypandoc.convert('README.md', 'rst')
-    print("Converted README.md into reStructuredText")
-except(IOError, ImportError, RuntimeError):
-    try:
-        long_description = open('README.md').read()
-    except IOError:
-        long_description = None
+here = path.abspath(path.dirname(__file__))
+with open(path.join(here, "README.rst"), encoding="utf-8") as f:
+    long_description = f.read()
 
 setup(
     name='pypusu',
@@ -18,6 +13,7 @@ setup(
     version='1.0.6',
     description='Python client for PuSuEngine',
     long_description=long_description,
+    long_description_content_type="text/x-rst",
     author='Janne Enberg',
     author_email='janne.enberg@lietu.net',
     python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*,<4",
